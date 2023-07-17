@@ -34,17 +34,7 @@ int main(int argc, char** argv){
             CMD("wget",link);
             Cstr_Array split = SPLIT(link,"/");
             char* last_str = split.elems[split.count-1];
-            // char foldername[260] = {0};
-            // snprintf(foldername,260,"temp_dir%s%s",PATH_SEP,last_str);
-            // size_t len = strlen(foldername);
-            // while(foldername[len-1] != '.'){
-            //     foldername[--len] = '\0';
-            // }
-            // foldername[len-1] = '\0';
-            // strcat(foldername,"/");
             CMD("tar","-xf",last_str,"--strip-components=1","-C","FoundryTools_linux_x64");
-            // CMD("rsync","-av",foldername,"FoundryTools_windows_x64");
-            // CMD("rm","-rf","temp_dir");
             RM(last_str);
         }
         if(strcmp(name,"x86_64-windows") == 0){
