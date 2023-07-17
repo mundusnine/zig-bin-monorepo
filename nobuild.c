@@ -4,9 +4,9 @@
 int main(int argc, char** argv){
     GO_REBUILD_URSELF(argc,argv);
     MKDIRS("build");
-    CMD("wget","-qO","temp.txt","https://ziglang.org/download/index.json");
+    CMD("wget","-qO","index.json","https://ziglang.org/download/index.json");
 
-    FILE* fout = fopen("temp.txt","r+");
+    FILE* fout = fopen("index.json","r+");
     fseek(fout,0,SEEK_END);
     size_t file_size = ftell(fout);
     fseek(fout,0,SEEK_SET);
@@ -58,5 +58,5 @@ int main(int argc, char** argv){
         child = child->next;
     }
     fclose(fout);
-    RM("temp.txt");
+    RM("index.json");
 }
